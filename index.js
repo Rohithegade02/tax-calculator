@@ -8,9 +8,17 @@ function validateNumber(input) {
     input.classList.toggle("is-invalid", !isValid);
     input.classList.toggle("is-valid", isValid);
     input.setCustomValidity(isValid ? "" : "Please enter numbers only");
-    
+    input.title = isValid ? "" : "Please enter numbers only";
+    input.classList.toggle("tooltip-error", !isValid);
 }
-function validateInput(input) {
+ 
+
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+})
+function validateInput() {
     validateNumber(grossSalary)
     validateNumber(extraSalary)
     validateNumber(deductionSalary)
@@ -33,18 +41,17 @@ const tax = taxPercentage[ageGroup]
 function handleSubmit(e) {
     e.preventDefault();
    
-validateInput()
+    validateInput()
    
     if (document.querySelectorAll('.is-invalid').length > 0) {
         return;
     }
 
-    
     const totalIncome = parseInt(grossSalary.value) + parseInt(extraSalary.value) - parseInt(deductionSalary.value);
     
     let message = ''
     if (totalIncome < 800000) {
-        message = "Your overall income will be " +'Below 8lakhs & Tax will not be applied'
+        message = "Your overall income will be " +'below 8lakhs & Tax will not be applied'
     } else {
         const calculatedTax = calculateTax(totalIncome, ageGroup.value)
         const totalValue = calculateTax ? calculatedTax?.toString()?.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") :''

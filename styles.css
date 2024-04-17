@@ -5,7 +5,43 @@ body{
  height: 100%;
  
 }
+label[for="floatingInputValue1"] {
+    color:#7B848C;
+    background-color: white;
+  }
+  label[for="floatingInputValue2"] {
+    color:#7B848C;
+  }
+  label[for="floatingInputValue3"] {
+    color:#7B848C;
+  }
+  label[for="floatingSelect"] {
+    color:#7B848C;
+  }
 
+
+  .form-control.is-invalid{
+    border-color: #4C5D6B;
+   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%237e7e7e'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='%237e7e7e' stroke='none'/></svg>") 
+  }
+  .form-select.is-invalid{
+    border-color: #4C5D6B;
+  }
+  .form-select.is-invalid:not([multiple]):not([size]){
+    --bs-form-select-bg-icon:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%237e7e7e'><circle cx='6' cy='6' r='4.5'/><path stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/><circle cx='6' cy='8.2' r='.6' fill='%237e7e7e' stroke='none'/></svg>") 
+  }
+  .is-invalid::after {
+    content: attr(title);
+    color: grey;
+    position: absolute;
+    background-color: white;
+    border: 1px solid grey;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 999;
+    margin-top: 5px;
+  }
+  
 .main-container{
     display: flex;
     flex-direction: column;
@@ -18,7 +54,11 @@ body{
     width: 50%;
     border: 2px solid #DCE2E9;
 }
-/* 300 to X */
+.tooltip-inner {
+    background-color: #4C5D6B;
+    color: #fff; 
+  }
+
 @media (max-width: 768px) {
     .form-container {   
         width: 90%;
