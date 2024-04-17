@@ -50,7 +50,7 @@ function handleSubmit(e) {
     const totalIncome = parseInt(grossSalary.value) + parseInt(extraSalary.value) - parseInt(deductionSalary.value);
     
     let message = ''
-    if (totalIncome < 800000) {
+    if (totalIncome <= 800000) {
         message = "Your overall income will be " +'below 8lakhs & Tax will not be applied'
     } else {
         const calculatedTax = calculateTax(totalIncome, ageGroup.value)
